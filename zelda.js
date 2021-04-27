@@ -1,12 +1,19 @@
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
+
+// Increase the size of the play window
+// Zoom is depricated and doesn't work with FF
+// scale() is giving me weird results outside of FF
+// document.body.style.zoom = "300%";
 document.body.style.transform = "scale(2.8)";
+
 //document.addEventListener("keydown",keyDownHandler, false);
 //document.addEventListener("keyup",keyUpHandler,false);
 let fps = 60;
 let worldTiles = new Image();
 worldTiles.src = "tiles-overworld.png";
 
+// All values have two digits to keep the array in a nice, square shape
 let map7_7 = [
   [22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22],
   [22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22],
@@ -27,6 +34,8 @@ let map7_7 = [
 function drawMap(level) {
   for (let i = 0; i < level.length; i++) {
     for (let j = 0; j < level[i].length; j++) {
+      // See MDN to understand the parameters for drawImage()
+      // ref. https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
       ctx.drawImage(
         worldTiles,
         (level[i][j] % 18) * 17 + 1,
