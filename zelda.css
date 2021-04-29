@@ -8,5 +8,12 @@ body {
 canvas {
   background: #eee;
   display: block;
-  margin: 35vh auto 0;
+  margin: 0 auto;
+  /* 
+  *******************
+  Use this if you choose to uncomment body.transform in the JS file.
+  Only looks okay in FF. Other browsers seem to ignore the top margin.
+  *******************
+  margin: 35vh auto 0; 
+  */
 }
